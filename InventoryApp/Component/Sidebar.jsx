@@ -1,0 +1,106 @@
+import React, { useState } from "react";
+import { PowerIcon,BuildingLibraryIcon, HomeIcon, ShoppingCartIcon, PlusCircleIcon ,UsersIcon ,ArrowUpOnSquareStackIcon ,ShoppingBagIcon} from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
+
+const Sidebar = () => {
+    const isAdmin=false;
+    const [isOpen, setIsOpen] = useState(true);
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+  return (
+    <div
+      className={`flex flex-col h-screen bg-[#607B9B] text-white transition-all duration-300 ${
+        isOpen ? "w-64" : "w-16"
+      }`}
+    >
+      <button
+        className="p-2 m-2 bg-[#84A1C4] rounded hover:bg-gray-600 focus:outline-none"
+        onClick={toggleSidebar}
+      >
+        {isOpen ? "«" : "»"}
+      </button>
+
+      <nav className="flex-1 overflow-y-auto mt-4">
+        {/* Home */}
+        <Link to="/">
+        <div
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+        >
+          <HomeIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">Products</span>}
+        </div>
+        </Link>
+        {/* Sales */}
+        <a
+          href="/sales"
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded mt-2"
+        >
+          <ShoppingCartIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">Sales</span>}
+        </a>
+
+        {/* Add Product */}
+        <a
+          href="/add-product"
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded mt-2"
+        >
+          <PlusCircleIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">Add Product</span>}
+        </a>
+        {/* Add users */}
+        {isAdmin && <Link to="/">
+        <div
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+        >
+          <UsersIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">Add Users</span>}
+        </div>
+        </Link>
+        }
+        {/* latest product */}
+         <Link to="/">
+        <div
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+        >
+          <ShoppingBagIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">Latest Products</span>}
+        </div>
+        </Link>
+        {/* Add Supplier */}
+        {isAdmin && <Link to="/">
+        <div
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+        >
+          <BuildingLibraryIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">Add Supplier</span>}
+        </div>
+        </Link>
+        }
+        {/* Admin Panel */}
+        {isAdmin && <Link to="/">
+        <div
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+        >
+          <PowerIcon className="h-6 w-6" />
+          {isOpen &&  <span className="ml-3">Admin Panel</span>}
+        </div>
+        </Link>
+        }
+      </nav>
+      <div
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded hover:border m-3 mb-4"
+        >
+          <UsersIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">{isAdmin ? "Admin" : "CommonUser"}</span>}
+        </div>
+      <div
+          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded hover:border m-3 mb-4"
+        >
+          <ArrowUpOnSquareStackIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">Logout</span>}
+        </div>
+    </div>
+  );
+};
+
+export default Sidebar;
