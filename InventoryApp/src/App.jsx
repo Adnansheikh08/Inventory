@@ -1,9 +1,8 @@
-import React from 'react'
-import {BrowserRouter , Routes ,Route} from "react-router-dom"
-import Sidebar from '../Component/Sidebar'
-import ProductPage from '../Component/Pages/ProductPage'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import AddProduct from '../Component/Pages/AddProduct'
+import ProductPage from '../Component/Pages/ProductPage'
 import SalesPage from '../Component/Pages/SalesPage'
+import Sidebar from '../Component/Sidebar'
 const App = () => {
   return (
     <BrowserRouter>

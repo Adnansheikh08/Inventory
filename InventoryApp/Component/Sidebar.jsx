@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { PowerIcon,BuildingLibraryIcon, HomeIcon, ShoppingCartIcon, PlusCircleIcon ,UsersIcon ,ArrowUpOnSquareStackIcon ,ShoppingBagIcon} from "@heroicons/react/24/solid";
+import { ArrowUpOnSquareStackIcon, BuildingLibraryIcon, HomeIcon, PlusCircleIcon, PowerIcon, ShoppingBagIcon, ShoppingCartIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`flex flex-col h-screen bg-[#607B9B] text-white transition-all duration-300 ${
+      className={`fixed z-10 flex flex-col h-screen bg-[#607B9B] text-white transition-all duration-300 ${
         isOpen ? "w-64" : "w-16"
       }`}
     >
