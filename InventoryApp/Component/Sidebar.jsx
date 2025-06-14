@@ -14,7 +14,7 @@ const Sidebar = () => {
       }`}
     >
       <button
-        className="p-2 m-2 bg-[#84A1C4] rounded hover:bg-gray-600 focus:outline-none"
+        className="p-2 m-2 bg-[#84A1C4] rounded hover:bg-[#709BCE] focus:outline-none"
         onClick={toggleSidebar}
       >
         {isOpen ? "«" : "»"}
@@ -24,7 +24,7 @@ const Sidebar = () => {
         {/* Home */}
         <Link to="/">
         <div
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+          className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
         >
           <HomeIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Products</span>}
@@ -33,7 +33,7 @@ const Sidebar = () => {
         {/* Sales */}
         <a
           href="/sales"
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded mt-2"
+          className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2"
         >
           <ShoppingCartIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Sales</span>}
@@ -42,7 +42,7 @@ const Sidebar = () => {
         {/* Add Product */}
         <a
           href="/add-product"
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded mt-2"
+          className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2"
         >
           <PlusCircleIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Add Product</span>}
@@ -50,7 +50,7 @@ const Sidebar = () => {
         {/* Add users */}
         {isAdmin && <Link to="/">
         <div
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+          className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
         >
           <UsersIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Add Users</span>}
@@ -60,7 +60,7 @@ const Sidebar = () => {
         {/* latest product */}
          <Link to="/">
         <div
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+          className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
         >
           <ShoppingBagIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Latest Products</span>}
@@ -69,7 +69,7 @@ const Sidebar = () => {
         {/* Add Supplier */}
         {isAdmin && <Link to="/">
         <div
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+          className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
         >
           <BuildingLibraryIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Add Supplier</span>}
@@ -79,7 +79,7 @@ const Sidebar = () => {
         {/* Admin Panel */}
         {isAdmin && <Link to="/">
         <div
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded"
+          className="flex items-center px-4 py-2 hover:bg-[#4B5C9C]rounded"
         >
           <PowerIcon className="h-6 w-6" />
           {isOpen &&  <span className="ml-3">Admin Panel</span>}
@@ -88,13 +88,13 @@ const Sidebar = () => {
         }
       </nav>
       <div
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded hover:border m-3 mb-4"
+          className="flex items-center px-4 py-2 hover:bg-[#709BCE] rounded hover:border m-3 mb-4"
         >
           <UsersIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">{isAdmin ? "Admin" : "CommonUser"}</span>}
         </div>
       <div
-          className="flex items-center px-4 py-2 hover:bg-gray-700 rounded hover:border m-3 mb-4"
+          className="flex items-center px-4 py-2 hover:bg-[#709BCE] rounded hover:border m-3 mb-4"
         >
           <ArrowUpOnSquareStackIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Logout</span>}
