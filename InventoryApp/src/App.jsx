@@ -10,8 +10,8 @@ const App = () => {
       <Sidebar/>
       <Routes>
         <Route path="/" element={<ProductPage/>}/>
-        <Route path="/addproduct" element={<AddProduct/>}/>
-        <Route path="/salesPage" element={<SalesPage/>}/>
+        <Route path="/add-product" element={<AddProduct/>}/>
+        <Route path="/sales" element={<SalesPage/>}/>
       </Routes>
     </BrowserRouter>
   )
