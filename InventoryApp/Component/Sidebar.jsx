@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`flex flex-col h-screen bg-[#607B9B] text-white transition-all duration-300 ${
+      className={`flex flex-col h-screen bg-red-500 text-white transition-all duration-300 ${
         isOpen ? "w-64" : "w-16"
       }`}
     >
