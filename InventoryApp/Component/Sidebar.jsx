@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`fixed z-10 flex flex-col h-screen bg-[#607B9B] text-white transition-all duration-300 ${
+      className={`fixed z-10 flex flex-col h-screen bg-[#3E4E88] text-white transition-all duration-300 ${
         isOpen ? "w-64" : "w-16"
       }`}
     >
@@ -31,22 +31,21 @@ const Sidebar = () => {
         </div>
         </Link>
         {/* Sales */}
-        <a
-          href="/sales"
+        <Link to="/sales"
           className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2"
         >
           <ShoppingCartIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Sales</span>}
-        </a>
+        </Link>
 
         {/* Add Product */}
-        <a
-          href="/add-product"
+        <Link
+          to="/add-product"
           className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2"
         >
           <PlusCircleIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Add Product</span>}
-        </a>
+        </Link>
         {/* Add users */}
         {isAdmin && <Link to="/">
         <div
@@ -58,7 +57,7 @@ const Sidebar = () => {
         </Link>
         }
         {/* latest product */}
-         <Link to="/">
+         <Link to="/latest-products">
         <div
           className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
         >
@@ -66,6 +65,18 @@ const Sidebar = () => {
           {isOpen && <span className="ml-3">Latest Products</span>}
         </div>
         </Link>
+
+
+        {/* Login/Signup */}
+        <Link
+          to="/login-signup"
+          className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2"
+        >
+          <PlusCircleIcon className="h-6 w-6" />
+          {isOpen && <span className="ml-3">LogIn/SignUp</span>}
+        </Link>
+
+
         {/* Add Supplier */}
         {isAdmin && <Link to="/">
         <div

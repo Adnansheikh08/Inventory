@@ -1,9 +1,7 @@
 
 const AddProduct = () => {
   return (
-    <div>
-      Add Product Page
-    </div>
+    <div>add productsssssssssssssssssssssssssssssssssssssssssssssss</div>
   )
 }
 
