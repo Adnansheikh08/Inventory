@@ -1,9 +1,7 @@
 
 const SalesPage = () => {
   return (
-    <div>
-      Sales Page
-    </div>
+<div>saleszzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</div>
   )
 }
 
