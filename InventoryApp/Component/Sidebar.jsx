@@ -69,11 +69,11 @@ const Sidebar = () => {
 
         {/* Login/Signup */}
         <Link
-          to="/login-signup"
+          to="/loginpage"
           className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2"
         >
           <PlusCircleIcon className="h-6 w-6" />
-          {isOpen && <span className="ml-3">LogIn/SignUp</span>}
+          {isOpen && <span className="ml-3">Login</span>}
         </Link>
 
 
