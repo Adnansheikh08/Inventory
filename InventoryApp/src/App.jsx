@@ -6,11 +6,12 @@ import SignupPage from "../Component/Pages/SignupPage"
 import ProductPage from '../Component/Pages/ProductPage'
 import SalesPage from '../Component/Pages/SalesPage'
 import Sidebar from '../Component/Sidebar'
+import {toast, Toaster} from 'sonner'
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Sidebar/>
+      {/* <Sidebar/> */}<Toaster position="top-center" richColors/>
       <Routes>
         <Route path="/" element={<ProductPage/>}/>
         <Route path="/add-product" element={<AddProduct/>}/>

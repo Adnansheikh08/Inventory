@@ -1,8 +1,22 @@
 import React from 'react'
 import IceCreamCard from './newCard';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Sidebar from '../Sidebar';
 const ProductPage = () => {
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+      navigate("/loginpage");
+    }
+  },[]);
   return (
+    <>
+    <div>
+      <Sidebar/>
+    </div>
     <div className="flex flex-col items-center w-full h-full z-20 p-4">
+      
       {/* Search Form */}
       <div className="w-full max-w-lg">
         <form className="flex">
@@ -48,6 +62,7 @@ const ProductPage = () => {
         <IceCreamCard />
       </div>
     </div>
+    </>
   );
 }
 
