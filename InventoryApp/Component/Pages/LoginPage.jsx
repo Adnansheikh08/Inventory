@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 // import { faFacebookF, faGoogle, faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
 const LoginPage = () => {
   const navigate = useNavigate();
   const [SignIn, setSignIn] = useState({
@@ -57,7 +55,7 @@ const LoginPage = () => {
   };
   return (
     <>
-      <div className="container mx-60">
+      {/* <div className="container mx-60"> */}
         <section className="bg-[#FAFAFA] bg-no-repeat bg-cover bg-[url(https://img.freepik.com/premium-vector/modern-sky-blue-gradient-banner-with-abstract-shapes_278222-3179.jpg)]">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <div className="bg-[#FAFAFA] shadow-2xl  p-4 w-full rounded-lg sm:max-w-md xl:p-0 dark:border-gray-700">
@@ -98,7 +96,7 @@ const LoginPage = () => {
             </div>
           </div>
         </section>
-      </div>
+      {/* </div> */}
     </>
   )
 }
