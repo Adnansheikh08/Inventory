@@ -1,12 +1,11 @@
 import { ArrowUpOnSquareStackIcon, BuildingLibraryIcon, HomeIcon, PlusCircleIcon, PowerIcon, ShoppingBagIcon, ShoppingCartIcon, UsersIcon } from "@heroicons/react/24/solid";
-import { useState , useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-const Sidebar = () => {
+
+const Sidebar = ({isOpen, toggleSidebar}) => {
   const navigate = useNavigate();
   const isAdmin = false;
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleSidebar = () => setIsOpen(!isOpen);
 
   const [name, setName] = useState(() => localStorage.getItem('name') || '');
 
@@ -35,8 +34,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`fixed z-10 flex flex-col h-screen bg-[#3E4E88] text-white transition-all duration-300 ${isOpen ? "w-64" : "w-16"
-        }`}
+      className={`fixed z-10 flex flex-col h-screen bg-[#3E4E88] text-white transition-all duration-300 ${isOpen ? "w-64" : "w-16"}`}
     >
       <button
         className="p-2 m-2 bg-[#84A1C4] rounded hover:bg-[#709BCE] focus:outline-none"
