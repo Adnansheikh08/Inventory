@@ -35,7 +35,7 @@ const SignupPage = () => {
       if (response.ok) {
         toast.success("User Created");
 
-        navigate("/auth/loginpage");
+        navigate("/loginpage");
       } else {
 
         if (data.errors && Array.isArray(data.errors)) {
