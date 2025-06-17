@@ -4,6 +4,49 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../Sidebar';
 const ProductPage = () => {
+  const data = [
+  {
+    "id": 1,
+    "name": "Organic Almond Butter",
+    "manufacturing_date": "2025-03-15",
+    "expiry_date": "2026-03-15",
+    "image_url": "https://th.bing.com/th/id/OPAC.a6inZbVkMGrHug474C474?w=592&h=550&o=5&dpr=1.3&pid=21.1",
+    "stock": 120
+  },
+  {
+    "id": 2,
+    "name": "Whole Wheat Bread",
+    "manufacturing_date": "2025-06-10",
+    "expiry_date": "2025-06-17",
+    "image_url": "https://bing.com/th?id=OSK.9ff9e3a8ef17694b0cf1a96199f0c8ce",
+    "stock": 45
+  },
+  {
+    "id": 3,
+    "name": "Sparkling Mineral Water – 500ml",
+    "manufacturing_date": "2025-05-01",
+    "expiry_date": "2027-05-01",
+    "image_url": "https://static.winc.com.au/pi/00/b5ca3dc69617b60fa626c0c4027c18e176a15c-3166127/large.jpg",
+    "stock": 300
+  },
+  {
+    "id": 4,
+    "name": "Greek Yogurt – Strawberry",
+    "manufacturing_date": "2025-06-14",
+    "expiry_date": "2025-06-21",
+    "image_url": "https://th.bing.com/th/id/OIP.z7Yw-j4xfskmIG7Yrkc_OgHaHa?rs=1&pid=ImgDetMain",
+    "stock": 78
+  },
+  {
+    "id": 5,
+    "name": "Dark Chocolate 70%",
+    "manufacturing_date": "2025-04-20",
+    "expiry_date": "2026-04-20",
+    "image_url": "https://mastmarket.com/cdn/shop/files/20230907_KateJordan_Photographer_Mast_Chocolate_DarkChocolate_70percent_0052copyRT.jpg?v=1720808679&width=1440",
+    "stock": 200
+  }
+]
+
   const navigate = useNavigate();
   useEffect(()=>{
     if(!localStorage.getItem("token")){
@@ -55,12 +98,18 @@ const ProductPage = () => {
 
       {/* Cards Grid */}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl">
-        <IceCreamCard />
-        <IceCreamCard />
-        <IceCreamCard />
-        <IceCreamCard />
-        <IceCreamCard />
-      </div>
+      {data.map(item => (
+        <IceCreamCard
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          manufacturingDate={item.manufacturing_date}
+          expiryDate={item.expiry_date}
+          imageUrl={item.image_url}
+          stock={item.stock}
+        />
+      ))}
+    </div>
     </div>
     </>
   );
