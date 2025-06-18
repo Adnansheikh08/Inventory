@@ -5,7 +5,8 @@ const AddProduct = ({ isSidebarOpen }) => {
     name: '',
     description: '',
     price: '',
-    imageUrl: ''
+    imageUrl: '',
+    stock: ''
   });
 
   const handleChange = e => {
@@ -20,115 +21,179 @@ const AddProduct = ({ isSidebarOpen }) => {
   };
   return (
     <>
-      <div className={`{transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"} flex flex-col justify-between `}>
-        <div className="w-full max-w-lg">
-          <form className="flex">
-            <label htmlFor="voice-search" className="sr-only">Search</label>
-            <div className="relative flex-grow">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                {/* Search Icon */}
-                <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.15 5.6h.01…" />
-                </svg>
-              </div>
-              <input
-                type="text"
-                id="voice-search"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                placeholder="Search Mockups, Logos, Templates..."
-              />
-              <button type="button" className="absolute inset-y-0 right-0 flex items-center pr-3">
-                {/* Mic Icon */}
-                <svg className="w-4 h-4 text-gray-500 hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7v3…" />
-                </svg>
-              </button>
-            </div>
-            <button
-              type="submit"
-              className="inline-flex items-center py-2.3 px-3 ml-2 text-sm font-medium text-white bg-blue-700 rounded-r-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+      <div
+        className={`transition-all duration-300 p-8 ${isSidebarOpen ? "ml-64" : "ml-16"} flex flex-col justify-center`}
+      >
+        <div className="min-h-screen bg-gray-50 rounded-3xl p-8 flex items-center justify-center">
+          <div className="w-full min-h-screen">
+            <h2 className="text-3xl font-bold text-gray-600 mb-6 text-center">
+              Add New Product
+            </h2>
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white p-8 rounded-3xl shadow-xl space-y-6"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="28" height="23" viewBox="0 0 48 48">
-                <path fill="#616161" d="M34.6 28.1H38.6V45.1H34.6z" transform="rotate(-45.001 36.586 36.587)"></path><path fill="#616161" d="M20 4A16 16 0 1 0 20 36A16 16 0 1 0 20 4Z"></path><path fill="#37474F" d="M36.2 32.1H40.2V44.400000000000006H36.2z" transform="rotate(-45.001 38.24 38.24)"></path><path fill="#64B5F6" d="M20 7A13 13 0 1 0 20 33A13 13 0 1 0 20 7Z"></path><path fill="#BBDEFB" d="M26.9,14.2c-1.7-2-4.2-3.2-6.9-3.2s-5.2,1.2-6.9,3.2c-0.4,0.4-0.3,1.1,0.1,1.4c0.4,0.4,1.1,0.3,1.4-0.1C16,13.9,17.9,13,20,13s4,0.9,5.4,2.5c0.2,0.2,0.5,0.4,0.8,0.4c0.2,0,0.5-0.1,0.6-0.2C27.2,15.3,27.2,14.6,26.9,14.2z"></path>
-              </svg>
-              Search
-            </button>
-          </form>
+              <div
+                className="bg-blue-50 p-4 rounded-t-3xl mb-3"
+              >
+                <p className="text-center text-gray-600 font-semibold">
+                  Fill out the product details below
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="name"
+                    className="text-gray-600 uppercase tracking-wide text-sm mb-2"
+                  >
+                    Product Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Enter product name"
+                    value={product.name}
+                    onChange={handleChange}
+                    required
+                    className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="price"
+                    className="text-gray-600 uppercase tracking-wide text-sm mb-2"
+                  >
+                    Price (₹)
+                  </label>
+                  <input
+                    id="price"
+                    name="price"
+                    type="number"
+                    step="0.01"
+                    placeholder="Enter price"
+                    value={product.price}
+                    onChange={handleChange}
+                    required
+                    className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col">
+                <label
+                  htmlFor="description"
+                  className="text-gray-600 uppercase tracking-wide text-sm mb-2"
+                >
+                  Description
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  rows="4"
+                  placeholder="Enter product description"
+                  value={product.description}
+                  onChange={handleChange}
+                  required
+                  className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400 resize-none"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="imageUrl"
+                    className="text-gray-600 uppercase tracking-wide text-sm mb-2"
+                  >
+                    Image URL
+                  </label>
+                  <input
+                    id="imageUrl"
+                    name="imageUrl"
+                    type="url"
+                    placeholder="https://example.com/product.jpg"
+                    value={product.imageUrl}
+                    onChange={handleChange}
+                    required
+                    className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="stocks"
+                    className="text-gray-600 uppercase tracking-wide text-sm mb-2"
+                  >
+                    Number of Stocks
+                  </label>
+                  <input
+                    id="stock"
+                    name="stock"
+                    type="number"
+                    placeholder="200"
+                    value={product.stock}
+                    onChange={handleChange}
+                    required
+                    className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="Manufacturing"
+                    className="text-gray-600 uppercase tracking-wide text-sm mb-2"
+                  >
+                    Manufacturing Date
+                  </label>
+                  <input
+                    id="Manufacturing"
+                    name="Manufacturing"
+                    type="date"
+                    placeholder="DD-MM-YYYY"
+                    value={product.Manufacturing}
+                    onChange={handleChange}
+                    required
+                    className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="Expiry"
+                    className="text-gray-600 uppercase tracking-wide text-sm mb-2"
+                  >
+                    Expiry Date
+                  </label>
+                  <input
+                    id="Expiry"
+                    name="Expiry"
+                    type="date"
+                    placeholder="DD-MM-YYYY"
+                    value={product.Expiry}
+                    onChange={handleChange}
+                    required
+                    className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="w-full md:w-auto bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-700 hover:shadow-md transition"
+                >
+                  Add Product
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
-        >
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Add New Product</h2>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-1" htmlFor="name">Product Name</label>
-            <input
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-              type="text"
-              id="name"
-              name="name"
-              value={product.name}
-              onChange={handleChange}
-              required
-              placeholder="Enter product name"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-1" htmlFor="description">Description</label>
-            <textarea
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-              id="description"
-              name="description"
-              rows="4"
-              value={product.description}
-              onChange={handleChange}
-              required
-              placeholder="Enter product description"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-1" htmlFor="price">Price (₹)</label>
-            <input
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-              type="number"
-              id="price"
-              name="price"
-              value={product.price}
-              onChange={handleChange}
-              step="0.01"
-              required
-              placeholder="Enter price"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-gray-700 mb-1" htmlFor="imageUrl">Image URL</label>
-            <input
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-              type="url"
-              id="imageUrl"
-              name="imageUrl"
-              value={product.imageUrl}
-              onChange={handleChange}
-              required
-              placeholder="https://example.com/product.jpg"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-          >
-            Add Product
-          </button>
-        </form>
-      </div>
     </>
+
+
   )
 }
 

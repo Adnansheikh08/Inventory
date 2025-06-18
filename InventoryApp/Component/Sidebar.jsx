@@ -62,13 +62,14 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
         </Link>
 
         {/* Add Product */}
-        <Link
+        {isAdmin && <Link
           to="/add-product"
           className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2"
         >
           <PlusCircleIcon className="h-6 w-6" />
           {isOpen && <span className="ml-3">Add Product</span>}
         </Link>
+        }
         {/* Add users */}
         {isAdmin && <Link to="/">
           <div
@@ -80,6 +81,7 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
         </Link>
         }
         {/* latest product */}
+        
         <Link to="/latest-products">
           <div
             className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
@@ -88,7 +90,6 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
             {isOpen && <span className="ml-3">Latest Products</span>}
           </div>
         </Link>
-
 
         {/* Login/Signup */}
         {/* <Link
@@ -122,17 +123,18 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
         }
       </nav>
       <div
-        className="flex items-center px-4 py-2 hover:bg-[#709BCE] rounded hover:border m-3 mb-4"
+        className="flex items-center  py-2 rounded m-3 mb-4 hover:border px-2"
       >
-        <UsersIcon className="h-6 w-6" />
-        {isOpen && <span className="ml-3">{name}</span>}
-      </div>
-      <div
-        className="flex items-center px-4 py-2 hover:bg-[#709BCE] rounded hover:border m-3 mb-4"
+        <UsersIcon className="h-6 w-6 mr-1" />
+        {isOpen && <span className="">{name}</span>}
+        <div
+        className="flex items-center px-4 hover:bg-red-500 rounded hover:border m-3 mb-4"
       >
         <ArrowUpOnSquareStackIcon className="h-6 w-6" />
-        {isOpen && <button onClick={logout} className="ml-3">Logout</button>}
+        {isOpen && <button onClick={logout} className=""></button>}
       </div>
+      </div>
+      
     </div>
   );
 };
