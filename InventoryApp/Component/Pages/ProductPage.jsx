@@ -93,8 +93,8 @@ const ProductPage = ( {isSidebarOpen} ) => {
         </form>
       </div>
 
-      {/* Cards Grid */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl">
+      {/* Cards flex */}
+      <div className="flex flex-row flex-wrap justify-streach mt-6 space-x-4 space-y-4">
       {data.map(item => (
         <IceCreamCard
           key={item.id}
