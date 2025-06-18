@@ -113,4 +113,3 @@ const ProductPage = ( {isSidebarOpen} ) => {
 }
 
 export default ProductPage
-
