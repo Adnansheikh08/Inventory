@@ -115,9 +115,9 @@ const LatestProducts = ( {isSidebarOpen} ) => {
           stock={item.stock}
         />
       ))}
+     </div>
     </div>
-    </div>
-    </>
+        </>
   );
 }
 
