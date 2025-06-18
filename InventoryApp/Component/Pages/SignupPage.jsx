@@ -56,6 +56,7 @@ const SignupPage = () => {
     }
   };
   return (
+      <>
       {/* <div className="container mx-60"> */}
       <section className="bg-[#FAFAFA] bg-no-repeat bg-cover bg-[url(https://img.freepik.com/premium-vector/modern-sky-blue-gradient-banner-with-abstract-shapes_278222-3179.jpg)]">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
