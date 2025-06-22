@@ -6,7 +6,9 @@ export default function IceCreamCard({
   manufacturingDate,
   expiryDate,
   imageUrl,
-  stock
+  price,
+  stock,
+  quantity
 }) {
   const [open, setOpen] = useState(false);
 
@@ -25,11 +27,11 @@ export default function IceCreamCard({
           <h2 className="text-lg font-semibold text-gray-800">
             {name}
           </h2>
-          <p className="text-sm text-gray-500 mt-1 pb-5">210 ml</p>
+          <p className="text-sm text-gray-500 mt-1 pb-5">{quantity}</p>
           <p className="text-xs text-gray-400 mt-2">Contains Added Flavouring*</p>
           <div className="mt-4 flex justify-between items-center">
             <span className="text-blue-700 font-semibold text-base">
-              ₹260
+             Rs {price}
             </span>
             <button
               onClick={() => setOpen(true)}
@@ -73,7 +75,7 @@ export default function IceCreamCard({
 
             {/* Footer */}
             <div className="flex justify-end items-center p-4 border-t space-x-3">
-              <span className="text-xl font-bold text-blue-700">₹260</span>
+              <span className="text-xl font-bold text-blue-700">{price} Rs</span>
               <button
                 onClick={() => setOpen(false)}
                 className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"

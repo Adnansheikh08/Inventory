@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 const Sidebar = ({isOpen, toggleSidebar}) => {
   const navigate = useNavigate();
-  const isAdmin = false;
+  const isAdmin = true;
 
   const [name, setName] = useState(() => localStorage.getItem('name') || '');
 
