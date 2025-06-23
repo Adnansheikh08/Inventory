@@ -57,7 +57,7 @@ router.post('/addproduct', async (req, res) => {
 // GET the latest N products
 router.get('/latestproducts', async (req, res) => {
   try {
-    const N = parseInt(req.query.limit) || 5; // default to 5
+    const N = parseInt(req.query.limit) || 10; // default to 5
     const latestList = await Product
       .find()
       .sort({ createdAt: -1 })  // newest first

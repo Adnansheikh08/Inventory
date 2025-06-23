@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import auth from "./routes/auth"
-
+import product from "./routes/product"
 dotenv.config();
 
 const app = express();
@@ -17,6 +17,7 @@ app.use(cors({
 const Port = 5050;
 
 app.use("/auth",auth)
+app.use("/product",product)
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URL)
@@ -37,6 +38,7 @@ mongoose
 // app.post();
 
 // Start Server
-app.listen(Port, () => {
-  console.log(`Server running on port ${Port}`);
+app.listen(Port, '0.0.0.0', () => {
+  console.log('Server is listening on port 3000 for all interfaces')
 });
+;
