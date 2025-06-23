@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Sidebar from "../Sidebar";
-import ProductPage from "./ProductPage";
+import LatestProducts from "./LatestProducts";
 
-const DashboardLayout = () => {
+const LatestProductLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const toggleSidebar = () => {
@@ -12,9 +12,9 @@ const DashboardLayout = () => {
   return (
     <div className="flex">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <ProductPage isSidebarOpen={isSidebarOpen} />
+      <LatestProducts isSidebarOpen={isSidebarOpen} />
     </div>
   )
 }
 
-export default DashboardLayout
+export default LatestProductLayout
