@@ -75,6 +75,14 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
           </div>
         </Link>
 
+        {/* less stock */}
+        <Link to="/less-stock">
+          <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+            <ShoppingBagIcon className="h-6 w-6" />
+            {isOpen && <span className="ml-3"> Less Stock </span>}
+          </div>
+        </Link>
+
         {/* Add Supplier */}
         {isAdmin && <Link to="/">
           <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">

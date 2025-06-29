@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Sidebar from "../Sidebar";
-import LatestProducts from "./LatestProducts";
+import LessStock from "./LessStock";
 
-const ProductLayout = () => {
+const LessStockLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const toggleSidebar = () => {
@@ -12,9 +12,9 @@ const ProductLayout = () => {
   return (
     <div className="flex">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <LatestProducts isSidebarOpen={isSidebarOpen} />
+      <LessStock isSidebarOpen={isSidebarOpen} />
     </div>
   )
 }
 
-export default ProductLayout
+export default LessStockLayout

@@ -28,12 +28,12 @@ const ProductPage = ( {isSidebarOpen} ) => {
 
   return (
     <>
-    <div className={`transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"}`}>
+    <div className={`transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"} w-full max-w-[1440px] mx-auto`}>
       
       {/* Search Form */}
           
       <form
-          className="flex items-center max-w-xl min-w-lg"
+          className="flex items-center max-w-xl"
           onSubmit={(e) => e.preventDefault()}>   
           <label for="voice-search" className="sr-only">Search</label>
           <div className="relative w-full">

@@ -1,38 +1,43 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import IceCreamCard from './newCard';
+  
+const LessStock = ( {isSidebarOpen} ) => {
+  const navigate = useNavigate();
+  const [products,setProducts] = useState([])
+  const [searchProducts, setSearchProducts] = useState("");
+  const [lessStockItems, setLessStockItems] = useState([]);
 
-const LatestProduct = ( {isSidebarOpen} ) => {
-  const [p, setP] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [searchLProducts, setSearchLProducts] = useState("");
-
- useEffect(() => {
-  fetch("http://localhost:5050/product/latestproducts")
-    .then(res => {
-      if (!res.ok) throw new Error(res.statusText);
-      return res.json();
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+      navigate("/loginpage");
+    }
+    fetch("http://localhost:5050/product/allproducts", {
+      method: "POST",
     })
-    .then(data => {
-      setP(data);
-    })
-    .catch(console.error)
-    .finally(() => setLoading(false));
-}, []);
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data)
+        
+      });
+  }, []);
 
-  const filteredLProducts = p.filter((item) =>
-    item.name.toLowerCase().includes(searchLProducts.toLowerCase())
+  useEffect(() => {
+    const filteredStock = products.filter(item => Number(item.stock) < 50);
+    setLessStockItems(filteredStock);
+  }, [products]);
+  
+  const filteredProducts = lessStockItems.filter((item) =>
+    item.name.toLowerCase().includes(searchProducts.toLowerCase())
   );
 
 
- if (loading) return <p>Loading…</p>;
-if (!p) return <p>No product found.</p>;
-
-return (
- <>
-     <div className={`transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"} w-full max-w-[1440px] mx-auto`}>
-       
+  return (
+    <>
+    <div className={`transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"} w-full max-w-[1440px] mx-auto`}>
+      
       {/* Search Form */}
-
+          
       <form
           className="flex items-center max-w-xl"
           onSubmit={(e) => e.preventDefault()}>   
@@ -49,8 +54,8 @@ return (
               id="voice-search"
               className="text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 border dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search Products"
-              value={searchLProducts}
-              onChange={(e) => setSearchLProducts(e.target.value)}
+              value={searchProducts}
+              onChange={(e) => setSearchProducts(e.target.value)}
               required />
               <button type="button" className="absolute inset-y-0 end-0 flex items-center pe-3">
                   <svg className="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
@@ -64,31 +69,30 @@ return (
               </svg>Search
           </button>
       </form>
-       
- 
-       {/* Cards flex */}
-       <div className="flex flex-row flex-wrap justify-streach mt-6 space-x-4 space-y-4">
-        {filteredLProducts.length > 0 ? (
-          filteredLProducts.map((item) => ( // For search functionality
-         <IceCreamCard
-           key={item.id}
-           id={item.id}
-           name={item.name}
-           manufacturingDate={item.manufacturing_date}
-           expiryDate={item.expiry_date}
-           imageUrl={item.image_url}
-           price={item.price}
-           quantity={item.quantity}
-           stock={item.stock}/>
-         ))) : (
-                 <p className="text-gray-600 text-lg col-span-full">No results found.</p>
-               )}
-       </div>
- 
-     </div>
-     </>
-);
 
+
+      {/* Cards flex */}
+      <div className="flex flex-row flex-wrap justify-streach mt-6 space-x-4 space-y-4">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((item) => (
+        <IceCreamCard
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          manufacturingDate={item.manufacturing_date}
+          expiryDate={item.expiry_date}
+          imageUrl={item.image_url}
+          price={item.price}
+          quantity={item.quantity}
+          stock={item.stock}/>
+        ))) : (
+                <p className="text-gray-600 text-lg col-span-full">No results found.</p>
+              )}
+      </div>
+
+    </div>
+    </>
+  );
 }
 
-export default LatestProduct;
+export default LessStock
