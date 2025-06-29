@@ -1,9 +1,9 @@
 import { Router } from "express"; // Import Router from express
 const router = Router();
 // import { JsonWebTokenError } from "jsonwebtoken";
-import User from "../model/user"; // Import User model
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import User from "../model/user"; // Import User model
 router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password ) {
