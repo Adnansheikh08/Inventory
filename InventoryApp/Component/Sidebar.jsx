@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const Sidebar = ({isOpen, toggleSidebar}) => {
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
   const isAdmin = true;
 
@@ -39,19 +39,31 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
 
       <nav className="flex-1 overflow-y-auto mt-4">
 
-        {/* Home */}
-        <Link to="/">
-          <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
-            <HomeIcon className="h-6 w-6" />
-            {isOpen && <span className="ml-3"> Products </span>}
-          </div>
-        </Link>
+        {!isAdmin && (
+          <>
+            <Link to="/">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <HomeIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3">Products</span>}
+              </div>
+            </Link>
 
-        {/* Sales */}
-        <Link to="/sales" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
-          <ShoppingCartIcon className="h-6 w-6" />
-          {isOpen && <span className="ml-3"> Sales </span>}
-        </Link>
+            <Link to="/latest-products">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <ShoppingBagIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3">Latest Products</span>}
+              </div>
+            </Link>
+
+            <Link to="/sales">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
+                <ShoppingCartIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3">Sales</span>}
+              </div>
+            </Link>
+          </>
+        )}
+
 
         {/* Add Product */}
         {isAdmin && <Link to="/add-product" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
@@ -59,35 +71,13 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
           {isOpen && <span className="ml-3"> Add Product </span>}
         </Link>}
 
-        {/* Add users */}
-        {isAdmin && <Link to="/">
-          <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
-            <UsersIcon className="h-6 w-6" />
-            {isOpen && <span className="ml-3"> Add Users </span>}
-          </div>
-        </Link>}
 
-        {/* latest products */}
-        <Link to="/latest-products">
-          <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
-            <ShoppingBagIcon className="h-6 w-6" />
-            {isOpen && <span className="ml-3"> Latest Products </span>}
-          </div>
-        </Link>
 
         {/* less stock */}
-        <Link to="/less-stock">
-          <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+        {isAdmin && <Link to="/less-stock">
+          <div className="text-red-500 flex items-center animate-blink px-4 py-2 hover:bg-[#4B5C9C] rounded">
             <ShoppingBagIcon className="h-6 w-6" />
-            {isOpen && <span className="ml-3"> Less Stock </span>}
-          </div>
-        </Link>
-
-        {/* Add Supplier */}
-        {isAdmin && <Link to="/">
-          <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
-            <BuildingLibraryIcon className="h-6 w-6" />
-            {isOpen && <span className="ml-3"> Add Supplier </span>}
+            {isOpen && <span className="ml-3"> LESS STOCK </span>}
           </div>
         </Link>}
 
@@ -101,7 +91,7 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
 
       </nav>
 
-      
+
       {/* Name and Logout */}
       <div className="flex flex-col">
 
@@ -116,8 +106,8 @@ const Sidebar = ({isOpen, toggleSidebar}) => {
         </div>
 
       </div>
-      
-      
+
+
     </div>
   );
 };

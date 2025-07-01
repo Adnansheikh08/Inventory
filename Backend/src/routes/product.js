@@ -1,7 +1,7 @@
 import { Router } from "express"; // Import Router from express
 const router = Router();
 import Product from "../model/product";
-
+import mongoose from "mongoose";
 router.post("/allproducts", async (req, res) => {
     try {
         const data = await Product.find().populate("name");
@@ -53,6 +53,26 @@ router.post('/addproduct', async (req, res) => {
     
 
 });
+
+router.delete('/:id', async (req, res) => {
+  let id = req.params.id.trim();
+  console.log('Raw id param:', JSON.stringify(req.params.id));
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: 'Invalid product ID' });
+  }
+
+  try {
+    const deleted = await Product.findOneAndDelete({ _id: id });
+    if (!deleted) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.json({ success: 'Product deleted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 // GET the latest N products
 router.get('/latestproducts', async (req, res) => {
