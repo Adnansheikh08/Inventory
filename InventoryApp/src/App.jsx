@@ -5,7 +5,7 @@ import DashboardLayout from "../Component/Pages/DashboardLayout"
 import LessStockLayout from "../Component/Pages/LessStockLayout"
 import LoginPage from "../Component/Pages/LoginPage"
 import ProductLayout from "../Component/Pages/ProductLayout"
-import SalesPage from '../Component/Pages/SalesPage'
+import SalesPageLayout from "../Component/Pages/SalesPageLayout"
 import SignupPage from "../Component/Pages/SignupPage"
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<DashboardLayout />} />
         <Route path="/add-product" element={<AddProductLayout/>}/>
-        <Route path="/sales" element={<SalesPage/>}/>
+        <Route path="/sales" element={<SalesPageLayout/>}/>
         <Route path="/latest-products" element={<ProductLayout/>}/>
         <Route path="/less-stock" element={<LessStockLayout/>}/>
         <Route path="/loginpage" element={<LoginPage/>}/>
