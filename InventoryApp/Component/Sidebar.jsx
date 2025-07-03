@@ -1,13 +1,26 @@
-import { ArrowUpOnSquareStackIcon, BuildingLibraryIcon, HomeIcon, PlusCircleIcon, PowerIcon, ShoppingBagIcon, ShoppingCartIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { ArrowUpOnSquareStackIcon, HomeIcon, PlusCircleIcon, PowerIcon, ShoppingBagIcon, ShoppingCartIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
-  const isAdmin = true;
-
+  // const isAdmin = true;
   const [name, setName] = useState(() => localStorage.getItem('name') || '');
+  const [role, setRole] = useState(() => localStorage.getItem("role") || "user");
+
+  const switchToAdmin = () => {
+    setRole("admin");
+    localStorage.setItem("role", "admin");
+    toast.success("Switched to Admin Panel");
+  };
+
+  const switchToUser = () => {
+    setRole("user");
+    localStorage.setItem("role", "user");
+    toast.success("Switched to User Panel");
+  };
+
 
   useEffect(() => {
     // listen for storage changes in other tabs (optional)
@@ -39,7 +52,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
       <nav className="flex-1 overflow-y-auto mt-4">
 
-        {!isAdmin && (
+        {/* User Panel */}
+
+        {role === "user" && (
           <>
             <Link to="/">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
@@ -61,33 +76,40 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 {isOpen && <span className="ml-3">Sales</span>}
               </div>
             </Link>
+
+            <Link to="/add-product" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
+              onClick={switchToAdmin}>
+              <PowerIcon className="h-6 w-6" />
+              {isOpen && <span className="ml-3">Admin Login</span>}
+          
+            </Link>
           </>
         )}
 
 
-        {/* Add Product */}
-        {isAdmin && <Link to="/add-product" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
-          <PlusCircleIcon className="h-6 w-6" />
-          {isOpen && <span className="ml-3"> Add Product </span>}
-        </Link>}
-
-
-
-        {/* less stock */}
-        {isAdmin && <Link to="/less-stock">
-          <div className="text-red-500 flex items-center animate-blink px-4 py-2 hover:bg-[#4B5C9C] rounded">
-            <ShoppingBagIcon className="h-6 w-6" />
-            {isOpen && <span className="ml-3"> LESS STOCK </span>}
-          </div>
-        </Link>}
-
         {/* Admin Panel */}
-        {isAdmin && <Link to="/">
-          <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C]rounded">
-            <PowerIcon className="h-6 w-6" />
-            {isOpen && <span className="ml-3"> Admin Panel </span>}
-          </div>
-        </Link>}
+
+        {role === "admin" && (
+        <>
+          <Link to="/add-product" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
+            <PlusCircleIcon className="h-6 w-6" />
+            {isOpen && <span className="ml-3"> Add Product </span>}
+          </Link>
+  
+          <Link to="/less-stock">
+            <div className="text-red-500 flex items-center animate-blink px-4 py-2 hover:bg-[#4B5C9C] rounded">
+              <ShoppingBagIcon className="h-6 w-6" />
+              {isOpen && <span className="ml-3"> LESS STOCK </span>}
+            </div>
+          </Link>
+          
+          <Link to="/" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
+              onClick={switchToUser}>
+              <PowerIcon className="h-6 w-6" />
+              {isOpen && <span className="ml-3">Switch To User</span>}
+          </Link>
+        </>
+        )}
 
       </nav>
 

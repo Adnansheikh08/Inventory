@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function IceCreamCard({
   id,
@@ -8,7 +8,9 @@ export default function IceCreamCard({
   imageUrl,
   price,
   stock,
-  quantity
+  quantity,
+  onDelete,
+  onUpdate
 }) {
   const [open, setOpen] = useState(false);
 
@@ -74,14 +76,27 @@ export default function IceCreamCard({
             </div>
 
             {/* Footer */}
-            <div className="flex justify-end items-center p-4 border-t space-x-3">
-              <span className="text-xl font-bold text-blue-700">{price} Rs</span>
+            <div className="flex justify-evenly items-center p-4 border-t space-x-3">
+
+              <button
+                onClick={() => onUpdate(id)}
+                className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition">
+                Update
+              </button>
+                     
+              <button
+                onClick={() => onDelete(id)}
+                className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition">
+                Delete
+              </button>
+                     
               <button
                 onClick={() => setOpen(false)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
-              >
+                className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">
                 Close
               </button>
+              <span className="text-xl font-bold text-blue-700">{price} Rs</span>
+              
             </div>
           </div>
         </div>
