@@ -1,4 +1,4 @@
-import { ArrowUpOnSquareStackIcon, HomeIcon, PlusCircleIcon, PowerIcon, ShoppingBagIcon, ShoppingCartIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { HomeIcon, PlusCircleIcon, PowerIcon, ShoppingBagIcon, ShoppingCartIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -9,11 +9,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [name, setName] = useState(() => localStorage.getItem('name') || '');
   const [role, setRole] = useState(() => localStorage.getItem("role") || "user");
 
-  const switchToAdmin = () => {
-    setRole("admin");
-    localStorage.setItem("role", "admin");
-    toast.success("Switched to Admin Panel");
-  };
+  // const switchToAdmin = () => {
+  //   setRole("admin");
+  //   localStorage.setItem("role", "admin");
+  //   toast.success("Switched to Admin Panel");
+  // };
 
   const switchToUser = () => {
     setRole("user");
@@ -71,18 +71,18 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             </Link>
 
             <Link to="/sales">
-              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
                 <ShoppingCartIcon className="h-6 w-6" />
                 {isOpen && <span className="ml-3">Sales</span>}
               </div>
             </Link>
-
-            <Link to="/add-product" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
-              onClick={switchToAdmin}>
-              <PowerIcon className="h-6 w-6" />
+            
+            <Link to="/login" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+              {/* onClick={switchToAdmin}> */}
+              <UsersIcon className="h-6 w-6" />
               {isOpen && <span className="ml-3">Admin Login</span>}
-          
             </Link>
+
           </>
         )}
 
@@ -123,7 +123,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         </div>
 
         <div className="flex px-2 mb-8 h-10 items-center rounded hover:bg-[#4B5C9C]">
-          <ArrowUpOnSquareStackIcon className="h-6 w-6 mx-2" />
+          <PowerIcon className="h-6 w-6 mx-2" />
           {isOpen && <button onClick={logout} className=""> Logout </button>}
         </div>
 
