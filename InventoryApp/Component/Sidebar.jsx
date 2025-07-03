@@ -70,13 +70,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               </div>
             </Link>
 
-            <Link to="/sales">
-              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
-                <ShoppingCartIcon className="h-6 w-6" />
-                {isOpen && <span className="ml-3">Sales</span>}
-              </div>
-            </Link>
-            
+
+
             <Link to="/login" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
               {/* onClick={switchToAdmin}> */}
               <UsersIcon className="h-6 w-6" />
@@ -90,25 +85,33 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         {/* Admin Panel */}
 
         {role === "admin" && (
-        <>
-          <Link to="/add-product" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
-            <PlusCircleIcon className="h-6 w-6" />
-            {isOpen && <span className="ml-3"> Add Product </span>}
-          </Link>
-  
-          <Link to="/less-stock">
-            <div className="text-red-500 flex items-center animate-blink px-4 py-2 hover:bg-[#4B5C9C] rounded">
-              <ShoppingBagIcon className="h-6 w-6" />
-              {isOpen && <span className="ml-3"> LESS STOCK </span>}
-            </div>
-          </Link>
-          
-          <Link to="/" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
+          <>
+            <Link to="/add-product" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
+              <PlusCircleIcon className="h-6 w-6" />
+              {isOpen && <span className="ml-3"> Add Product </span>}
+            </Link>
+
+            <Link to="/less-stock">
+              <div className="text-red-500 flex items-center animate-blink px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <ShoppingBagIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3"> LESS STOCK </span>}
+              </div>
+            </Link>
+
+            <Link to="/sales">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <ShoppingCartIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3">Sales</span>}
+              </div>
+            </Link>
+
+
+            <Link to="/" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
               onClick={switchToUser}>
               <PowerIcon className="h-6 w-6" />
               {isOpen && <span className="ml-3">Switch To User</span>}
-          </Link>
-        </>
+            </Link>
+          </>
 
         )}
 
@@ -116,20 +119,20 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
       {/* Name and Logout */}
       {role === "admin" && (
-      <div className="flex flex-col">
+        <div className="flex flex-col">
 
-        <div className="flex px-2 mb-1 h-10 items-center rounded hover:bg-[#4B5C9C]">
-          <UsersIcon className="h-6 w-6 mx-2" />
-          {isOpen && <span className="">{name}</span>}
-        </div>
+          <div className="flex px-2 mb-1 h-10 items-center rounded hover:bg-[#4B5C9C]">
+            <UsersIcon className="h-6 w-6 mx-2" />
+            {isOpen && <span className="">{name}</span>}
+          </div>
 
-        <Link to="/" className="flex items-center px-4 py-2 mb-5 hover:bg-[#4B5C9C] rounded"
+          <Link to="/" className="flex items-center px-4 py-2 mb-5 hover:bg-[#4B5C9C] rounded"
             onClick={switchToUser}>
             <PowerIcon className="h-6 w-6" />
             {isOpen && <span className="ml-3">Logout</span>}
-        </Link>
+          </Link>
 
-      </div>
+        </div>
       )}
 
 

@@ -23,9 +23,9 @@ const App = () => {
          }/>
        
          <Route path="/sales" element={
-           <UserRoute>
+           <AdminRoute>
              <SalesPageLayout />
-           </UserRoute>
+           </AdminRoute>
          }/>
        
          <Route path="/latest-products" element={

@@ -88,7 +88,7 @@ const LessStock = ( {isSidebarOpen} ) => {
 
 
       {/* Cards flex */}
-      <div className="flex flex-row flex-wrap justify-streach mt-6 space-x-4 space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 space-x-4 space-y-4">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((item) => (
         <IceCreamCard

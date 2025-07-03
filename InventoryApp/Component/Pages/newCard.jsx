@@ -13,7 +13,7 @@ export default function IceCreamCard({
   onUpdate
 }) {
   const [open, setOpen] = useState(false);
-
+  const role = localStorage.getItem("role");
   return (
     <>
       {/* Summary Card */}
@@ -77,7 +77,8 @@ export default function IceCreamCard({
 
             {/* Footer */}
             <div className="flex justify-evenly items-center p-4 border-t space-x-3">
-
+            {role=== "admin" && (
+              <>
               <button
                 onClick={() => onUpdate(id)}
                 className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition">
@@ -89,7 +90,8 @@ export default function IceCreamCard({
                 className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition">
                 Delete
               </button>
-                     
+              </>
+            )}
               <button
                 onClick={() => setOpen(false)}
                 className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">
