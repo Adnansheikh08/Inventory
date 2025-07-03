@@ -7,19 +7,48 @@ import LoginPageLayout from "../Component/Pages/LoginPageLayout"
 import ProductLayout from "../Component/Pages/ProductLayout"
 import SalesPageLayout from "../Component/Pages/SalesPageLayout"
 import SignupPageLayout from "../Component/Pages/SignupPageLayout"
+import AdminRoute from "./ProtectedRoutes/AdminRoute"
+import UserRoute from "./ProtectedRoutes/UserRoute"
 
 const App = () => {
   return (
     <BrowserRouter>
       {/* <Sidebar/> */}<Toaster position="top-center" richColors/>
       <Routes>
-        <Route path="/" element={<DashboardLayout />} />
-        <Route path="/add-product" element={<AddProductLayout/>}/>
-        <Route path="/sales" element={<SalesPageLayout/>}/>
-        <Route path="/latest-products" element={<ProductLayout/>}/>
-        <Route path="/less-stock" element={<LessStockLayout/>}/>
+
+        <Route path="/" element={
+           <UserRoute>
+             <DashboardLayout />
+           </UserRoute>
+         }/>
+       
+         <Route path="/sales" element={
+           <UserRoute>
+             <SalesPageLayout />
+           </UserRoute>
+         }/>
+       
+         <Route path="/latest-products" element={
+           <UserRoute>
+             <ProductLayout />
+           </UserRoute>
+         }/>
+
         <Route path="/login" element={<LoginPageLayout/>}/>
         <Route path="/signup" element={<SignupPageLayout/>}/>
+
+        <Route path="/add-product" element={
+          <AdminRoute>
+            <AddProductLayout/>
+            </AdminRoute>
+          }/>
+
+        <Route path="/less-stock" element={
+          <AdminRoute>
+          <LessStockLayout/>
+          </AdminRoute>
+          }/>
+
       </Routes>
     </BrowserRouter>
   )

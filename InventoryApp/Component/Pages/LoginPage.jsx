@@ -74,8 +74,7 @@ const LoginPage = ( {isSidebarOpen} ) => {
                 <form className="space-y-4 md:space-y-6" onSubmit={login}>
                   <div>
                     <label for="email" className="block mb-2 text-sm font-medium text-gray-900">Your email</label>
-                    <input type="email" name="email" id="email" className="border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="xyz@gmail.
-                    com"
+                    <input type="email" name="email" id="email" className="border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="xyz@gmail.com"
                     value={SignIn.email}
                     onChange={handleChange}
                     required="true" />

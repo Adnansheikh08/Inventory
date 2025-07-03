@@ -109,12 +109,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               {isOpen && <span className="ml-3">Switch To User</span>}
           </Link>
         </>
+
         )}
 
       </nav>
 
-
       {/* Name and Logout */}
+      {role === "admin" && (
       <div className="flex flex-col">
 
         <div className="flex px-2 mb-1 h-10 items-center rounded hover:bg-[#4B5C9C]">
@@ -122,12 +123,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           {isOpen && <span className="">{name}</span>}
         </div>
 
-        <div className="flex px-2 mb-8 h-10 items-center rounded hover:bg-[#4B5C9C]">
-          <PowerIcon className="h-6 w-6 mx-2" />
-          {isOpen && <button onClick={logout} className=""> Logout </button>}
-        </div>
+        <Link to="/" className="flex items-center px-4 py-2 mb-5 hover:bg-[#4B5C9C] rounded"
+            onClick={switchToUser}>
+            <PowerIcon className="h-6 w-6" />
+            {isOpen && <span className="ml-3">Logout</span>}
+        </Link>
 
       </div>
+      )}
 
 
     </div>
