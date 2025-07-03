@@ -100,21 +100,21 @@ export default function IceCreamCard({
                   {isEditing ? (
                     <button
                       onClick={saveStock}
-                      className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition"
+                      className="bg-[#709BCE] text-white px-4 py-2 rounded-full hover:bg-[#3E4E88] transition"
                     >
                       Save
                     </button>
                   ) : (
                     <button
                       onClick={() => { setIsEditing(true); setNewStock(stock); }}
-                      className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition"
+                      className="bg-[#709BCE] text-white px-4 py-2 rounded-full hover:bg-[#3E4E88] transition"
                     >
                       Edit Stock
                     </button>
                   )}
                   <button
                     onClick={() => onDelete(id)}
-                    className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition"
+                    className="bg-[#709BCE] text-white px-4 py-2 rounded-full hover:bg-red-600 transition"
                   >
                     Delete
                   </button>
@@ -122,7 +122,7 @@ export default function IceCreamCard({
               )}
               <button
                 onClick={() => setOpen(false)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
+                className="bg-[#709BCE] text-white px-4 py-2 rounded-full hover:bg-[#3E4E88] transition"
               >
                 Close
               </button>
