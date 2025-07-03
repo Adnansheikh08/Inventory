@@ -46,7 +46,7 @@ const LessStock = ( {isSidebarOpen} ) => {
       toast.error("Failed to delete product");
     }
   };
-
+  
 
   return (
     <>
