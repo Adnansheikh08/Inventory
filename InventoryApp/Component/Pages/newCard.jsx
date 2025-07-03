@@ -8,7 +8,7 @@ export default function IceCreamCard({
   imageUrl,
   price,
   stock,
-  quantity,
+  description="This product is very good , please buy it Thankyou so much !! ",
   onDelete,
   onUpdate
 }) {
@@ -29,8 +29,8 @@ export default function IceCreamCard({
           <h2 className="text-lg font-semibold text-gray-800">
             {name}
           </h2>
-          <p className="text-sm text-gray-500 mt-1 pb-5">{quantity}</p>
-          <p className="text-xs text-gray-400 mt-2">Contains Added Flavouring*</p>
+          <p className="text-sm text-gray-500 mt-1 pb-5">{description}</p>
+         
           <div className="mt-4 flex justify-between items-center">
             <span className="text-blue-700 font-semibold text-base">
              Rs {price}
