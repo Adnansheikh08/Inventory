@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-const SignupPage = () => {
+
+const SignupPage = ( {isSidebarOpen} ) => {
   const navigate = useNavigate();
   const [signUpData, setSignUpData] = useState({
     name: "",
@@ -57,8 +57,7 @@ const SignupPage = () => {
   };
   return (
       <>
-      {/* <div className="container mx-60"> */}
-      <section className="bg-[#FAFAFA] bg-no-repeat bg-cover bg-[url(https://img.freepik.com/premium-vector/modern-sky-blue-gradient-banner-with-abstract-shapes_278222-3179.jpg)]">
+      <section className={`transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"} w-full max-w-[1440px] mx-auto bg-[#FAFAFA] bg-no-repeat bg-cover bg-[url(https://img.freepik.com/premium-vector/modern-sky-blue-gradient-banner-with-abstract-shapes_278222-3179.jpg)]`}>
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="bg-[#FAFAFA] shadow-2xl  p-4 w-full rounded-lg sm:max-w-md xl:p-0 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -88,14 +87,13 @@ const SignupPage = () => {
                 </div>
                 <button type="submit" className="w-full bg-[#709BCE] hover:bg-blue-700 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign up</button>
                 <p className="text-sm font-light">
-                  Already have an account? <Link to="/loginpage" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</Link>
+                  Already have an account? <Link to="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</Link>
                 </p>
               </form>
             </div>
           </div>
         </div>
       </section>
-      {/* </div> */}
     </>
   )
 }

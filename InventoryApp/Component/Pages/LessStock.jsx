@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from "sonner";
 import IceCreamCard from './newCard';
   
 const LessStock = ( {isSidebarOpen} ) => {
@@ -30,6 +32,20 @@ const LessStock = ( {isSidebarOpen} ) => {
   const filteredProducts = lessStockItems.filter((item) =>
     item.name.toLowerCase().includes(searchProducts.toLowerCase())
   );
+
+
+  // For Deleting Product
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5050/product/${id}`);
+      toast.success("Product deleted successfully");
+  
+      setProducts((prev) => prev.filter((item) => item._id !== id));
+    } catch (error) {
+      console.error("Delete failed:", error);
+      toast.error("Failed to delete product");
+    }
+  };
 
 
   return (
@@ -76,15 +92,16 @@ const LessStock = ( {isSidebarOpen} ) => {
         {filteredProducts.length > 0 ? (
           filteredProducts.map((item) => (
         <IceCreamCard
-          key={item.id}
-          id={item.id}
+          key={item._id}
+          id={item._id}
           name={item.name}
           manufacturingDate={item.manufacturing_date}
           expiryDate={item.expiry_date}
           imageUrl={item.image_url}
           price={item.price}
           quantity={item.quantity}
-          stock={item.stock}/>
+          stock={item.stock}
+          onDelete={handleDelete}/>
         ))) : (
                 <p className="text-gray-600 text-lg col-span-full">No results found.</p>
               )}
