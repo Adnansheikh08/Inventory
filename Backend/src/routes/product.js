@@ -73,6 +73,30 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.put('/:id/stock', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { stock } = req.body;
+
+    if (typeof stock !== 'number' || stock < 0) {
+      return res.status(400).json({ message: 'Invalid stock value' });
+    }
+
+    const updatedProduct = await Product.findByIdAndUpdate(
+      id,
+      { stock },
+      { new: true }
+    );
+    if (!updatedProduct) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    res.json(updatedProduct);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 // GET the latest N products
 router.get('/latestproducts', async (req, res) => {
