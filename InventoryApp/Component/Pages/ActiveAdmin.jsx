@@ -29,32 +29,30 @@ const ActiveAdmin = ( {isSidebarOpen} ) => {
 
 
   return (
-    <section className={`transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"} w-full max-w-[1440px] mx-auto bg-[#FAFAFA] h-screen bg-no-repeat bg-cover bg-[url(https://i.pinimg.com/736x/3a/12/14/3a121425d7d35c9fed505d12f2c16c1c.jpg)]`}>
+  <section className={`transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"} w-full max-w-[1440px] mx-auto bg-[#FAFAFA] h-screen bg-no-repeat bg-cover bg-[url(https://i.pinimg.com/736x/3a/12/14/3a121425d7d35c9fed505d12f2c16c1c.jpg)]`}>
     
-      <h1 className="text-center text-2xl font-bold mb-6">Active Admins</h1>
+    <h1 className="text-center text-2xl font-bold mb-6">Active Admins</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div className="min-w-0 w-full sm:w-3/4 md:w-1/2 mx-auto bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+      <div className="space-y-4">
         {admins.map(admin => (
-          <div key={admin._id} className="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
-            <div className="flex justify-between items-start">
-
-              <div>
-                <h2 className="text-lg font-semibold">{admin.name}</h2>
-                <p className="text-sm text-gray-500">{admin.email}</p>
-              </div>
-
-              <button
-                onClick={() => handleDelete(admin._id)}
-                className="text-red-600 hover:text-red-800"
-                title="Delete Admin">
-                <TrashIcon className="w-6 h-6" />
-              </button>
-
+          <div key={admin._id} className="flex justify-between items-center border-b pb-2">
+            <div>
+              <p className="font-medium">{admin.name}</p>
+              <p className="text-sm text-gray-500">{admin.email}</p>
             </div>
+            <button
+              onClick={() => handleDelete(admin._id)}
+              className="text-red-600 hover:text-red-800"
+              title="Delete Admin">
+              <TrashIcon className="w-5 h-5" />
+            </button>
           </div>
         ))}
       </div>
-    </section>
+    </div>
+    
+  </section>
   );
 };
 
