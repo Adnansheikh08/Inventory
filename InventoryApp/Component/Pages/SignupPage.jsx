@@ -7,7 +7,8 @@ const SignupPage = ({ isSidebarOpen }) => {
   const [signUpData, setSignUpData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    code: '',
   });
 
   const handleChange = (e) => {
@@ -100,6 +101,22 @@ const SignupPage = ({ isSidebarOpen }) => {
                   onChange={handleChange}
                   required
                   placeholder="Enter your password"
+                  className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
+                />
+              </div>
+              
+              <div className="flex flex-col">
+                <label htmlFor="Admin_Code" className="text-gray-600 uppercase tracking-wide text-sm mb-2">
+                  Admin Code
+                </label>
+                <input
+                  id="Admin_code"
+                  name="code"
+                  type="text"
+                  value={signUpData.code}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter your Admin Code"
                   className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-400"
                 />
               </div>

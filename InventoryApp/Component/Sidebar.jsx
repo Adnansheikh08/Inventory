@@ -92,7 +92,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
             <Link to="/add-admin">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
-                <PlusCircleIcon className="h-6 w-6" />
+                <UsersIcon className="h-6 w-6" />
                 {isOpen && <span className="ml-3"> Add admin </span>}
               </div>
             </Link>

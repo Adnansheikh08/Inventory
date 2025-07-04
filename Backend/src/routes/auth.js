@@ -5,12 +5,17 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../model/user"; // Import User model
+dotenv.config(); // Load environment variables
+const Admin_code = process.env.Admin_code; // Get admin code from environment variables
 router.post("/signup", async (req, res) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password ) {
+  const { name, email, password ,code} = req.body;
+    if (!name || !email || !password || !code) {
     return res.status(400).json({ error: "Please fill in all fields." });
   }
-
+console.log('code:', JSON.stringify(code), 'Admin_code:', JSON.stringify(Admin_code));
+    if (code != Admin_code) {
+    return res.status(403).json({ error: "Sign-up not allowed as you are not Admin." });
+  }
   try {
     const found = await User.findOne({ email });
     if (found) {
