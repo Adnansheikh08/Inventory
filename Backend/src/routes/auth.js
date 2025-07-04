@@ -3,6 +3,7 @@ const router = Router();
 // import { JsonWebTokenError } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 import User from "../model/user"; // Import User model
 router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
@@ -48,6 +49,17 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     console.error("Login error:", err);
     return res.status(500).json({ error: "Login error: " + err.message });
+  }
+});
+router.get('/users', async (req, res, next) => {
+  try {
+    const excludeId = process.env.Admin_id; // Get the admin ID from environment variables
+    const filter = excludeId ? { _id: { $ne: excludeId } } : {};
+
+    const users = await User.find(filter);
+    res.json(users);
+  } catch (err) {
+    next(err);
   }
 });
 
