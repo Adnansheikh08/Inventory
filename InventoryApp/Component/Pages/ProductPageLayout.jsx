@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Sidebar from "../Sidebar";
-import LatestProducts from "./LatestProducts";
+import ProductPage from "./ProductPage";
 
-const ProductLayout = () => {
+const ProductPageLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const toggleSidebar = () => {
@@ -12,9 +12,9 @@ const ProductLayout = () => {
   return (
     <div className="flex">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <LatestProducts isSidebarOpen={isSidebarOpen} />
+      <ProductPage isSidebarOpen={isSidebarOpen} />
     </div>
   )
 }
 
-export default ProductLayout
+export default ProductPageLayout

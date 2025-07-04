@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import IceCreamCard from './newCard';
 
-const LatestProduct = ( {isSidebarOpen} ) => {
+const LatestProducts = ( {isSidebarOpen} ) => {
   const [p, setP] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchLProducts, setSearchLProducts] = useState("");
@@ -85,4 +85,4 @@ return (
 
 }
 
-export default LatestProduct;
+export default LatestProducts;
