@@ -31,7 +31,7 @@ const LoginPage = ( {isSidebarOpen} ) => {
         localStorage.setItem("name",data.name);
         console.log(data.name);
         toast.success("Logged in");
-        navigate("/add-product");
+        navigate("/");
       } else {
 
         if (data.errors && Array.isArray(data.errors)) {

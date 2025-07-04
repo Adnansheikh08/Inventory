@@ -9,18 +9,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [name, setName] = useState(() => localStorage.getItem('name') || '');
   const [role, setRole] = useState(() => localStorage.getItem("role") || "user");
 
-  // const switchToAdmin = () => {
-  //   setRole("admin");
-  //   localStorage.setItem("role", "admin");
-  //   toast.success("Switched to Admin Panel");
-  // };
-
   const switchToUser = () => {
     setRole("user");
     localStorage.setItem("role", "user");
     toast.success("Switched to User Panel");
   };
-
 
   useEffect(() => {
     // listen for storage changes in other tabs (optional)
@@ -42,7 +35,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     // Delay navigation by 1 second (1000 ms)
 
   };
-
 
 
   return (
@@ -70,8 +62,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               </div>
             </Link>
 
-
-
             <Link to="/login" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
               {/* onClick={switchToAdmin}> */}
               <UsersIcon className="h-6 w-6" />
@@ -86,13 +76,22 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         {role === "admin" && (
           <>
-            <Link to="/add-product" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded mt-2">
-              <PlusCircleIcon className="h-6 w-6" />
-              {isOpen && <span className="ml-3"> Add Product </span>}
+            <Link to="/">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <HomeIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3">Products</span>}
+              </div>
+            </Link>
+
+            <Link to="/add-product">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <PlusCircleIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3"> Add Product </span>}
+              </div>
             </Link>
 
             <Link to="/less-stock">
-              <div className="text-red-500 flex items-center animate-blink px-4 py-2 hover:bg-[#4B5C9C] rounded">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded text-red-500 animate-blink">
                 <ShoppingBagIcon className="h-6 w-6" />
                 {isOpen && <span className="ml-3"> LESS STOCK </span>}
               </div>
@@ -105,11 +104,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               </div>
             </Link>
 
-
-            <Link to="/" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded"
-              onClick={switchToUser}>
-              <PowerIcon className="h-6 w-6" />
-              {isOpen && <span className="ml-3">Switch To User</span>}
+            <Link to="/" onClick={switchToUser}>
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <PowerIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3">Switch To User</span>}
+              </div>
             </Link>
           </>
 
@@ -121,16 +120,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       {role === "admin" && (
         <div className="flex flex-col">
 
-          <div className="flex px-2 mb-1 h-10 items-center rounded hover:bg-[#4B5C9C]">
-            <UsersIcon className="h-6 w-6 mx-2" />
+          <div className="flex items-center px-3 mb-6 h-10 hover:bg-[#4B5C9C] rounded">
+            <UsersIcon className="h-6 w-6 mx-3" />
             {isOpen && <span className="">{name}</span>}
           </div>
 
-          <Link to="/" className="flex items-center px-4 py-2 mb-5 hover:bg-[#4B5C9C] rounded"
+          {/* <Link to="/" className="flex items-center px-4 py-2 mb-5 hover:bg-[#4B5C9C] rounded"
             onClick={switchToUser}>
             <PowerIcon className="h-6 w-6" />
             {isOpen && <span className="ml-3">Logout</span>}
-          </Link>
+          </Link> */}
 
         </div>
       )}
