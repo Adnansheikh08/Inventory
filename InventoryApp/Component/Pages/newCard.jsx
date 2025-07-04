@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 export default function IceCreamCard({
   id,
   name,
@@ -8,7 +9,7 @@ export default function IceCreamCard({
   imageUrl,
   price,
   stock: initialStock,
-  description = "...",
+  description = "Delicious ice cream with added flavouring for a delightful treat. Perfect for any occasion!  Enjoy the rich taste and creamy texture that melts in your mouth.",
   onDelete,
 }) {
   const [open, setOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function IceCreamCard({
   const [isEditing, setIsEditing] = useState(false);
   const [newStock, setNewStock] = useState(initialStock);
   const role = localStorage.getItem("role");
-
+  const navigate = useNavigate();
   const saveStock = async () => {
     if (newStock < 0 || isNaN(newStock)) {
       alert("Stock must be 0 or greater");
@@ -31,10 +32,16 @@ export default function IceCreamCard({
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const updated = await res.json();
       setStock(updated.stock);
+      toast.success("Stock updated successfully");
+      setOpen(false); // Close modal after saving
+      setTimeout(() => {
+        navigate(0)  
+      }, 500);
+       // Redirect to less stock page
       setIsEditing(false);
     } catch (err) {
       console.error(err);
-      alert("Failed to update stock");
+      toast.error("Failed to update stock");
     }
   };
 
@@ -48,6 +55,7 @@ export default function IceCreamCard({
         <div className="mt-4">
           <h2 className="text-lg font-semibold text-gray-700">{name}</h2>
           <p className="text-sm text-gray-500 mt-1 pb-5">{description}</p>
+          <p className="text-sm text-gray-500 mt-1 pb-5">Quintity:{stock}</p>
           <div className="mt-4 flex justify-between items-center">
             <span className="text-blue-700 font-semibold">Rs {price}</span>
             <button

@@ -90,6 +90,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               </div>
             </Link>
 
+            <Link to="/add-admin">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <PlusCircleIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3"> Add admin </span>}
+              </div>
+            </Link>
+
+
             <Link to="/less-stock">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded text-red-500 animate-blink">
                 <ShoppingBagIcon className="h-6 w-6" />
