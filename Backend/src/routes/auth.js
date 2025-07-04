@@ -2,8 +2,8 @@ import { Router } from "express"; // Import Router from express
 const router = Router();
 // import { JsonWebTokenError } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 import User from "../model/user"; // Import User model
 dotenv.config(); // Load environment variables
 const Admin_code = process.env.Admin_code; // Get admin code from environment variables
@@ -65,6 +65,19 @@ router.get('/users', async (req, res, next) => {
     res.json(users);
   } catch (err) {
     next(err);
+  }
+});
+
+router.delete("/users/:id", async (req, res) => {
+  try {
+    const deleted = await User.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.json({ success: "User deleted successfully" });
+  } catch (error) {
+    console.error("Delete error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
