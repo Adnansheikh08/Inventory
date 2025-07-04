@@ -32,6 +32,18 @@ console.log('code:', JSON.stringify(code), 'Admin_code:', JSON.stringify(Admin_c
   }
 })
 
+router.delete("/users/:id", async (req, res) => {
+  try {
+    const deleted = await User.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.json({ success: "User deleted successfully" });
+  } catch (error) {
+    console.error("Delete error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
