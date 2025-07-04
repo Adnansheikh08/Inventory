@@ -51,21 +51,21 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <Link to="/">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
                 <HomeIcon className="h-6 w-6" />
-                {isOpen && <span className="ml-3">Products</span>}
+                {isOpen && <span className="ml-3"> Products </span>}
               </div>
             </Link>
 
             <Link to="/latest-products">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
                 <ShoppingBagIcon className="h-6 w-6" />
-                {isOpen && <span className="ml-3">Latest Products</span>}
+                {isOpen && <span className="ml-3"> Latest Products </span>}
               </div>
             </Link>
 
             <Link to="/login" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
               {/* onClick={switchToAdmin}> */}
               <UsersIcon className="h-6 w-6" />
-              {isOpen && <span className="ml-3">Admin Login</span>}
+              {isOpen && <span className="ml-3"> Admin Login </span>}
             </Link>
 
           </>
@@ -79,7 +79,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <Link to="/">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
                 <HomeIcon className="h-6 w-6" />
-                {isOpen && <span className="ml-3">Products</span>}
+                {isOpen && <span className="ml-3"> Products </span>}
               </div>
             </Link>
 
@@ -93,10 +93,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <Link to="/add-admin">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
                 <UsersIcon className="h-6 w-6" />
-                {isOpen && <span className="ml-3"> Add admin </span>}
+                {isOpen && <span className="ml-3"> Add Admin </span>}
               </div>
             </Link>
 
+            <Link to="/active-admin">
+              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+                <UsersIcon className="h-6 w-6" />
+                {isOpen && <span className="ml-3"> Active Admin </span>}
+              </div>
+            </Link>
 
             <Link to="/less-stock">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded text-red-500 animate-blink">
@@ -108,14 +114,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <Link to="/sales">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
                 <ShoppingCartIcon className="h-6 w-6" />
-                {isOpen && <span className="ml-3">Sales</span>}
+                {isOpen && <span className="ml-3"> Sales </span>}
               </div>
             </Link>
 
             <Link to="/" onClick={switchToUser}>
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
                 <PowerIcon className="h-6 w-6" />
-                {isOpen && <span className="ml-3">Switch To User</span>}
+                {isOpen && <span className="ml-3"> Switch To User </span>}
               </div>
             </Link>
           </>
