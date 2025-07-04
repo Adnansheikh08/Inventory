@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 export default function IceCreamCard({
   id,
   name,
@@ -9,7 +9,7 @@ export default function IceCreamCard({
   imageUrl,
   price,
   stock: initialStock,
-  description = "Delicious ice cream with added flavouring for a delightful treat. Perfect for any occasion!  Enjoy the rich taste and creamy texture that melts in your mouth.",
+  description,
   onDelete,
 }) {
   const [open, setOpen] = useState(false);
@@ -55,7 +55,7 @@ export default function IceCreamCard({
         <div className="mt-4">
           <h2 className="text-lg font-semibold text-gray-700">{name}</h2>
           <p className="text-sm text-gray-500 mt-1 pb-5">{description}</p>
-          <p className="text-sm text-gray-500 mt-1 pb-5">Quintity:{stock}</p>
+          <p className="text-sm text-gray-500 mt-1 ">Quintity:{stock}</p>
           <div className="mt-4 flex justify-between items-center">
             <span className="text-blue-700 font-semibold">Rs {price}</span>
             <button
@@ -99,7 +99,6 @@ export default function IceCreamCard({
                   )}
                 </li>
               </ul>
-              <p className="text-sm text-gray-500">Contains added flavouring*</p>
             </div>
 
             <div className="flex justify-evenly items-center p-4 border-t space-x-3">

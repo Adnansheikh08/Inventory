@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Toaster } from 'sonner'
+import ActiveAdminLayout from "../Component/Pages/ActiveAdminLayout"
 import AddProductLayout from "../Component/Pages/AddProductLayout"
 import LatestProductLayout from "../Component/Pages/LatestProductLayout"
 import LessStockLayout from "../Component/Pages/LessStockLayout"
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/add-admin" element={<AdminRoute> <SignupPageLayout/> </AdminRoute>}/>
 
         <Route path="/add-product" element={ <AdminRoute> <AddProductLayout/> </AdminRoute> }/>
+        <Route path="/active-admin" element={ <AdminRoute> <ActiveAdminLayout/> </AdminRoute> }/>
         <Route path="/less-stock" element={ <AdminRoute> <LessStockLayout/> </AdminRoute> }/>
         <Route path="/sales" element={ <AdminRoute> <SalesPageLayout/> </AdminRoute> }/>
 

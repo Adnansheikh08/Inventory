@@ -82,6 +82,7 @@ const ProductPage = ( {isSidebarOpen} ) => {
         <IceCreamCard
           key={item._id}
           id={item._id}
+          description={item.description}
           name={item.name}
           manufacturingDate={item.manufacturing_date}
           expiryDate={item.expiry_date}
