@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
-  // const isAdmin = true;
+
   const [name, setName] = useState(() => localStorage.getItem('name') || '');
   const [role, setRole] = useState(() => localStorage.getItem("role") || "user");
 
@@ -31,15 +31,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       navigate('/loginpage');
     }, 1000);
     toast.success('Logged off');
-
     // Delay navigation by 1 second (1000 ms)
-
   };
 
 
   return (
     <div className={`fixed z-10 flex flex-col h-screen bg-[#3E4E88] text-white transition-all duration-300 ${isOpen ? "w-64" : "w-16"}`}>
-      <button className="p-2 m-2 bg-[#84A1C4] rounded hover:bg-[#709BCE] focus:outline-none" onClick={toggleSidebar}> {isOpen ? "«" : "»"}
+      <button className="p-2 m-2 bg-[#84A1C4] rounded hover:bg-[#709BCE] focus:outline-none" onClick={toggleSidebar}> {isOpen ? "<<" : ">>"}
       </button>
 
       <nav className="flex-1 overflow-y-auto mt-4">
@@ -56,13 +54,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             </Link>
 
             <Link to="/latest-products">
-              <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+              <div className="flex items-center px-4 py-2 mt-1 hover:bg-[#4B5C9C] rounded">
                 <ShoppingBagIcon className="h-6 w-6" />
                 {isOpen && <span className="ml-3"> Latest Products </span>}
               </div>
             </Link>
 
-            <Link to="/login" className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
+            <Link to="/login" className="flex items-center px-4 py-2 mt-1 hover:bg-[#4B5C9C] rounded">
               {/* onClick={switchToAdmin}> */}
               <UsersIcon className="h-6 w-6" />
               {isOpen && <span className="ml-3"> Admin Login </span>}
