@@ -31,12 +31,12 @@ const ActiveAdmin = ( {isSidebarOpen} ) => {
   return (
   <section className={`transition-all duration-300 p-4 ${isSidebarOpen ? "ml-64" : "ml-16"} w-full max-w-[1440px] mx-auto bg-[#FAFAFA] h-screen bg-no-repeat bg-cover bg-[url(https://i.pinimg.com/736x/3a/12/14/3a121425d7d35c9fed505d12f2c16c1c.jpg)]`}>
     
-    <h1 className="text-center text-2xl font-bold mb-6">Active Admins</h1>
 
-    <div className="min-w-0 w-full sm:w-3/4 md:w-1/2 mx-auto bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+    <div className="min-w-0 w-full sm:w-3/4 md:w-1/2 mx-auto mt-6 bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+      <h1 className="w-full text-center text-3xl font-bold mb-4 border-b-3 border-gray-500 inline-block pb-4">Active Admins</h1>
       <div className="space-y-4">
         {admins.map(admin => (
-          <div key={admin._id} className="flex justify-between items-center border-b pb-2">
+          <div key={admin._id} className="flex justify-between items-center border-b-2 border-gray-400 pb-2 mt-2">
             <div>
               <p className="font-medium">{admin.name}</p>
               <p className="text-sm text-gray-500">{admin.email}</p>

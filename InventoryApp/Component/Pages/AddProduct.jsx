@@ -55,12 +55,11 @@ const AddProduct = ({ isSidebarOpen }) => {
   return (
     <>
       <div className={`transition-all duration-300 p-8 ${isSidebarOpen ? "ml-64" : "ml-16"} flex flex-col justify-center bg-[#FAFAFA] `}>
-        <div className="min-h-screen rounded-3xl p-8 flex items-center justify-center ">
+        <div className="min-h-screen rounded-3xl flex items-center justify-center ">
           <div className="w-full min-h-screen ">
-            <h2 className="text-3xl font-bold text border-b-2 border-gray mb-6 text-center">
-              Add New Product
-            </h2>
             <form onSubmit={handleSubmit} className=" p-8 rounded-3xl shadow-xl space-y-6  bg-no-repeat bg-cover bg-[url(https://i.pinimg.com/736x/3a/12/14/3a121425d7d35c9fed505d12f2c16c1c.jpg)]">
+            <h2 className="text-center font-bold text-3xl border-b-3 border-gray-500 mb-6 pb-3">
+              Add New Product </h2>
               <div className="bg-[#709BCE] p-4 rounded-t-3xl mb-3">
                 <p className="text-center text-white font-semibold">
                   Enter the product details as requested below
