@@ -2,10 +2,11 @@ import { HomeIcon, PlusCircleIcon, PowerIcon, ShoppingBagIcon, ShoppingCartIcon,
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-
+import React from "react";
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
-
+  const Admin_id = localStorage.getItem("id");
+  
   const [name, setName] = useState(() => localStorage.getItem('name') || '');
   const [role, setRole] = useState(() => localStorage.getItem("role") || "user");
 
@@ -16,7 +17,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   };
 
   useEffect(() => {
-    // listen for storage changes in other tabs (optional)
+    
     const onStorage = (e) => {
       if (e.key === 'name') setName(e.newValue || '');
     };
@@ -31,7 +32,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       navigate('/loginpage');
     }, 1000);
     toast.success('Logged off');
-    // Delay navigation by 1 second (1000 ms)
+  // Delay navigation by 1 second (1000 ms)
   };
 
 
@@ -95,12 +96,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               </div>
             </Link>
 
-            <Link to="/active-admin">
+            {Admin_id=='6867d788d714391abadf9454' && <Link to="/active-admin">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded">
                 <UsersIcon className="h-6 w-6" />
                 {isOpen && <span className="ml-3"> Active Admin </span>}
               </div>
-            </Link>
+            </Link>}
 
             <Link to="/less-stock">
               <div className="flex items-center px-4 py-2 hover:bg-[#4B5C9C] rounded text-red-500 animate-blink">
