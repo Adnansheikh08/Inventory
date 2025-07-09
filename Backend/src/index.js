@@ -38,7 +38,5 @@ mongoose
 // app.post();
 
 // Start Server
-app.listen(Port, '0.0.0.0', () => {
-  console.log('Server is listening on port 5050 for all interfaces')
-});
+
 ;
