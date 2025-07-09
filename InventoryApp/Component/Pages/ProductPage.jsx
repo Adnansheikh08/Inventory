@@ -6,13 +6,12 @@ import IceCreamCard from './newCard';
   
 const ProductPage = ( {isSidebarOpen} ) => {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  console.log("Token:", token);
   const [products,setProducts] = useState([])
   const [searchProducts, setSearchProducts] = useState("");
 
   useEffect(()=>{
-    if(!localStorage.getItem("token")){
-      navigate("/loginpage");
-    }
     fetch("http://localhost:5050/product/allproducts", {
       method: "POST",
     })
