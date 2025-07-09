@@ -15,7 +15,7 @@ app.use(cors({
   credentials: true,
 }));
 const Port = 5050;
-
+app.get("/", (req, res) => res.send("Express on Vercel"));
 app.use("/auth",auth)
 app.use("/product",product)
 // Connect to MongoDB
